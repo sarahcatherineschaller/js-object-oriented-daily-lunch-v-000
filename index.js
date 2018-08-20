@@ -1,11 +1,10 @@
 // global datastore
 let store = { neighborhoods: [], meals: [], customers: [], deliveries: [] };
 
-let neighborhoodId = 0;
-let customerId = 0;
-let mealId = 0;
-let deliveryId = 0;
-
+let neighborhoodId = 0
+let mealId = 0
+let customerId = 0
+let delveryId = 0
 
 class Neighborhood {
   constructor (name){
@@ -13,16 +12,17 @@ class Neighborhood {
     this.id = neighborhoodId++;
 
     store.neighborhoods.push(this);
+
   }
-  customers(){
-    return store.customers.filter(customer =>{
-      return customer.neighborhoodId === this.id;
-    })
-  }
-  deliveries(){
-    return store.deliveries.filter(delivery =>{
+  deliveries() {
+    return store.deliveries.filter(delivery => {
       return delivery.neighborhoodId === this.id;
-    })
+    });
+  }
+  customers() {
+    return store.customers.filter(customer => {
+      return customer.neighborhoodId === this.id;
+    });
   }
   meals(){
     let mealsArray = this.deliveries().filter(delivery =>{
