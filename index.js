@@ -22,9 +22,18 @@ class Neighborhood {
       return customer.neighborhoodId === this.id;
     });
   }
-  meals() {
-    let allMeals = this.customers().map(customer => customer.meals());
-
+  meals(){
+    let mealsArray = this.deliveries().filter(delivery =>{
+      return delivery.meal();
+    });
+    console.log(mealsArray);
+    let mealsNames = mealsArray.map(meal =>{
+      return meal.mealId;
+    })
+    console.log(mealsNames);
+    let mealsUnique = [...new Set(mealsNames)];
+    console.log(mealsUnique);
+    return mealsUnique;
   }
 }
 
