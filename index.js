@@ -7,22 +7,20 @@ let customerId = 0
 let delveryId = 0
 
 class Neighborhood {
-  constructor (name){
-    this.name = name;
-    this.id = neighborhoodId++;
-
+  constructor(name) {
+    this.id = ++neighborhoodId
+    this.name = name
     store.neighborhoods.push(this);
-
   }
-  deliveries() {
-    return store.deliveries.filter(delivery => {
-      return delivery.neighborhoodId === this.id;
-    });
-  }
-  customers() {
-    return store.customers.filter(customer => {
+  customers(){
+    return store.customers.filter(customer =>{
       return customer.neighborhoodId === this.id;
-    });
+    })
+  }
+  deliveries(){
+    return store.deliveries.filter(delivery =>{
+      return delivery.neighborhoodId === this.id;
+    })
   }
   meals(){
     let mealsArray = this.deliveries().filter(delivery =>{
