@@ -78,10 +78,10 @@ class Meal {
       return delivery.customer();
     });
   }
-  static byPrice() {
-    return store.meals.sort((mealOne, mealTwo) => {
-      return mealOne.price < mealTwo.price;
-    });
+  static byPrice(){
+    return store.meals.slice().sort(function (mealOne, mealTwo){
+      return mealTwo.price - mealOne.price;
+    })
   }
 
 }
