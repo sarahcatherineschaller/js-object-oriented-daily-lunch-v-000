@@ -12,22 +12,22 @@ class Neighborhood {
     this.name = name
     store.neighborhoods.push(this);
   }
-  customers(){
-    return store.customers.filter(customer =>{
-      return customer.neighborhoodId === this.id;
-    })
-  }
-  deliveries(){
-    return store.deliveries.filter(delivery =>{
+  deliveries() {
+    return store.deliveries.filter(delivery => {
       return delivery.neighborhoodId === this.id;
-    })
+    });
   }
-  meals(){
-    let mealsArray = this.deliveries().filter(delivery =>{
+  customers() {
+    return store.customers.filter(customer => {
+      return customer.neighborhoodId === this.id;
+    });
+  }
+  meals() {
+    let allMeals = this.deliveries().filter(delivery => {
       return delivery.meal();
     });
-    console.log(mealsArray);
-    let mealsNames = mealsArray.map(meal =>{
+    console.log(allMeals);
+    let mealsNames = allMeals.map(meal => {
       return meal.mealId;
     })
     console.log(mealsNames);
