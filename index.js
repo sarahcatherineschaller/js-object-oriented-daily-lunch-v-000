@@ -1,10 +1,10 @@
 // global datastore
 let store = { neighborhoods: [], meals: [], customers: [], deliveries: [] };
 
-let neighborhoodId = 0;
-let mealId = 0;
-let customerId = 0;
-let deliveryId = 0;
+let neighborhoodId = 0
+let mealId = 0
+let customerId = 0
+let deliveryId = 0
 
 class Neighborhood {
   constructor(name) {
@@ -22,12 +22,12 @@ class Neighborhood {
       return customer.neighborhoodId === this.id;
     });
   }
-  meals() {
-    let allMeals = this.deliveries().filter(delivery => {
+  meals(){
+    let mealsArray = this.deliveries().filter(delivery =>{
       return delivery.meal();
     });
-    console.log(allMeals);
-    let mealsNames = allMeals.map(meal => {
+    console.log(mealsArray);
+    let mealsNames = mealsArray.map(meal =>{
       return meal.mealId;
     })
     console.log(mealsNames);
@@ -78,10 +78,10 @@ class Meal {
       return delivery.customer();
     });
   }
-  static byPrice(){
-    return store.meals.slice().sort(function (mealOne, mealTwo){
-      return mealTwo.price - mealOne.price;
-    })
+  static byPrice() {
+    return store.meals.sort((mealOne, mealTwo) => {
+      return mealOne.price < mealTwo.price;
+    });
   }
 
 }
