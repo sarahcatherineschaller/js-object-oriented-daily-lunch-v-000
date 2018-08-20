@@ -24,15 +24,15 @@ class Neighborhood {
   }
   meals() {
     let allMeals = this.customers().map(customer => customer.meals());
-    
+
   }
 }
 
 class Customer {
-  constructor(name, neighborhood={}) {
+  constructor(name, neighborhoodId) {
     this.id = ++customerId
     this.name = name
-    this.neighborhoodId = neighborhood.id
+    this.neighborhoodId = neighborhoodId
     store.customers.push(this);
   }
   deliveries() {
@@ -46,12 +46,9 @@ class Customer {
     });
   }
   totalSpent() {
-    let mealTotals = this.meals().map(meal => {
-      return meal.price;
-    });
-    return mealTotals.reduce((acc, current) => {
-      return acc + current;
-    });
+    return this.meals().reduce(function(total, meal) {
+      return meal.price + total;
+    },0);
   }
 }
 
